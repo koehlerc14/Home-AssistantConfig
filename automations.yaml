@@ -1,23 +1,23 @@
-automation:
-  alias: Turn on the lights when the sun sets
-  initial_state: True
-  hide_entity: False
-  trigger:
-    platform: sun
-    event: sunset
-    offset: "-01:00:00"  
-  action:
-    service: homeassistant.turn_on
-    entity_id: switch.ge_14282_plugin_twooutlet_smart_switch_switch
+  - id: sunset
+    alias: Turn on the lights when the sun sets
+    initial_state: True
+    hide_entity: False
+    trigger:
+      platform: sun
+      event: sunset
+      offset: "-01:00:00"  
+    action:
+      service: homeassistant.turn_on
+      entity_id: switch.ge_14282_plugin_twooutlet_smart_switch_switch
 
-automation 2:
-  alias: Turn off lights by morning
-  initial_state: True
-  hide_entity: False
-  trigger:
-    platform: sun
-    event: sunrise
-    offset: "-05:00:00"  
-  action:
-    service: homeassistant.turn_off
-    entity_id: switch.ge_14282_plugin_twooutlet_smart_switch_switch
+  - id: sunrise
+    alias: Turn off lights by morning
+    initial_state: True
+    hide_entity: False
+    trigger:
+      platform: sun
+      event: sunrise
+      offset: "-05:00:00"  
+    action:
+      service: homeassistant.turn_off
+      entity_id: switch.ge_14282_plugin_twooutlet_smart_switch_switch
