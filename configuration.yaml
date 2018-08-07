@@ -1,0 +1,115 @@
+homeassistant:
+  # Name of the location where Home Assistant is running
+  name: Home
+  # Location required to calculate the time the sun rises and sets
+  latitude: !secret castillo_lat
+  longitude: !secret castillo_long
+  # Impacts weather/sunrise data (altitude above sea level in meters)
+  elevation: !secret castillo_elev
+  # metric for Metric, imperial for Imperial
+  unit_system: imperial
+  # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
+  time_zone: America/Denver
+  # Customization file
+  customize: !include customize.yaml
+
+# Show links to resources in log and frontend
+introduction:
+
+# Enables the frontend
+frontend:
+
+# Enables configuration UI
+config:
+
+http:
+  # Secrets are defined in the file secrets.yaml
+  # api_password: !secret http_password
+  # Uncomment this if you are using SSL/TLS, running in Docker container, etc.
+  # base_url: example.duckdns.org:8123
+
+# Checks for available updates
+# Note: This component will send some information about your system to
+# the developers to assist with development of Home Assistant.
+# For more information, please see:
+# https://home-assistant.io/blog/2016/10/25/explaining-the-updater/
+updater:
+  # Optional, allows Home Assistant developers to focus on popular components.
+  # include_used_components: true
+
+# Allows you to issue voice commands from the frontend in enabled browsers
+conversation:
+
+# Enables support for tracking state changes over time
+history:
+
+# View all events in a logbook
+logbook:
+
+# Enables a map showing the location of tracked devices
+map:
+
+# Track the sun
+sun:
+
+# Weather prediction
+sensor:
+  - platform: yr
+
+# Text to speech
+tts:
+  - platform: google
+
+# Cloud
+cloud:
+
+# Example configuration.yaml entry
+device_tracker:
+  - platform: icloud
+    username: !secret ck_apple_id
+    password: !secret ck_apple_pw
+    account_name: !secret ck_apple_nm
+
+device_tracker:
+  - platform: icloud
+    username: !secret ar_apple_id
+    password: !secret ar_apple_pw
+    account_name: !secret ar_apple_nm
+
+group: !include groups.yaml
+automation: !include automations.yaml
+script: !include scripts.yaml
+    
+#Rachio iframe panel_iframe
+panel_iframe:
+  rachio:
+    title: Rachio
+    url: "https://app.rach.io"
+    icon: mdi:water-pump
+
+#Nest Integration
+nest:
+  client_id: !secret nest_id
+  client_secret: !secret nest_secret
+    
+#Apple TV 
+apple_tv:
+  - host: !secret castillo_appletv_ip
+    login_id: !secret castillo_appletv_login
+    name: Apple TV 4K
+ 
+#History Graph 
+history_graph:
+  gr2:
+    name: Temperature
+    entities:
+      -  climate.dining_room
+    hours_to_show: 168
+    # refresh: 0 
+  
+zwave:
+  usb_path: /dev/ttyACM0
+  
+# Example configuration.yaml entry
+ifttt:
+  key: !secret iftt_key
