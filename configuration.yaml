@@ -109,7 +109,12 @@ history_graph:
       -  climate.dining_room
     hours_to_show: 168
     # refresh: 0 
-  
+
+group:
+  evening_lights:
+    - light.ge_14295_inwall_smart_toggle_dimmer_level
+    - switch.ge_14282_plugin_twooutlet_smart_switch_switch
+    
 zwave:
   usb_path: /dev/ttyACM0
   

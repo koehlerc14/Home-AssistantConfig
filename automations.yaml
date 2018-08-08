@@ -20,4 +20,4 @@
       offset: "-05:00:00"  
     action:
       service: homeassistant.turn_off
-      entity_id: switch.ge_14282_plugin_twooutlet_smart_switch_switch
+      entity_id: group.evening_lights
