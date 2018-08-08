@@ -10,8 +10,7 @@ homeassistant:
   unit_system: imperial
   # Pick yours from here: http://en.wikipedia.org/wiki/List_of_tz_database_time_zones
   time_zone: America/Denver
-  # Customization file
-  customize: !include customize.yaml
+
 
 # Show links to resources in log and frontend
 introduction:
@@ -63,6 +62,9 @@ tts:
 # Cloud
 cloud:
 
+#Alexa
+alexa:
+
 # Example configuration.yaml entry
 device_tracker:
   - platform: icloud
@@ -76,9 +78,10 @@ device_tracker:
     password: !secret ar_apple_pw
     account_name: !secret ar_apple_nm
 
-group: !include groups.yaml
-automation: !include automations.yaml
-script: !include scripts.yaml
+device_tracker:
+  platform: trackr
+  username: !secret trackr_user
+  password: !secret trackr_pass
     
 #Rachio iframe panel_iframe
 panel_iframe:
@@ -110,6 +113,37 @@ history_graph:
 zwave:
   usb_path: /dev/ttyACM0
   
-# Example configuration.yaml entry
+# IFTT Craig
 ifttt:
   key: !secret iftt_key
+  
+#Zones for Map
+zone:
+  name: Home
+  latitude: !secret castillo_lat
+  longitude: !secret castillo_long
+  radius: 200
+  icon: mdi:home
+
+zone 2:
+  name: DWD
+  latitude: !secret ck_work_lat
+  longitude: !secret ck_work_long
+  radius: 200
+  icon: mdi:work
+
+zone 3:
+  name: Safeway
+  latitude: !secret ar_work_lat
+  longitude: !secret ar_work_long
+  radius: 200
+  icon: mdi:work
+  
+###############################################################
+######  Include Files
+###############################################################
+# Customization file
+  customize: !include customize.yaml
+  group: !include groups.yaml
+  automation: !include automations.yaml
+  script: !include scripts.yaml

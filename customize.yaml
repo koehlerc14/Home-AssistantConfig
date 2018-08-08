@@ -1,0 +1,6 @@
+device_tracker.cksiphone2:
+  friendly_name: Craig_iphone
+switch.ge_14282_plugin_twooutlet_smart_switch_switch:
+  friendly_name: Lamp
+light.ge_14295_inwall_smart_toggle_dimmer_level:
+  friendly_name: Kitchen Accent
