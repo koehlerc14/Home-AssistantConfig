@@ -1,0 +1,3 @@
+  evening_lights:
+    - light.ge_14295_inwall_smart_toggle_dimmer_level
+    - switch.ge_14282_plugin_twooutlet_smart_switch_switch
