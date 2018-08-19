@@ -12,9 +12,6 @@ homeassistant:
   time_zone: America/Denver
   customize: !include customize.yaml
 
-# Show links to resources in log and frontend
-introduction:
-
 frontend:
 
 # Enables configuration UI
@@ -24,6 +21,7 @@ http:
   api_password: !secret ha_password
   ssl_certificate: !secret ssl_certificate
   ssl_key: !secret ssl_key
+  base_url: !secret url_name
 
 updater:
   # Optional, allows Home Assistant developers to focus on popular components.
@@ -35,8 +33,8 @@ conversation:
 # Enables support for tracking state changes over time
 history:
 
-# View all events in a logbook
 logbook:
+# View all events in a logbook
 
 #view log of services
 logger:
@@ -67,17 +65,6 @@ device_tracker:
     username: !secret ck_apple_id
     password: !secret ck_apple_pw
     account_name: !secret ck_apple_nm
-
-device_tracker:
-  - platform: icloud
-    username: !secret ar_apple_id
-    password: !secret ar_apple_pw
-    account_name: !secret ar_apple_nm
-
-device_tracker:
-  platform: trackr
-  username: !secret trackr_user
-  password: !secret trackr_pass
     
 #Rachio iframe panel_iframe
 panel_iframe:
@@ -105,12 +92,7 @@ history_graph:
       -  climate.dining_room
     hours_to_show: 168
     # refresh: 0 
-
-group:
-  evening_lights:
-    - light.ge_14295_inwall_smart_toggle_dimmer_level
-    - switch.ge_14282_plugin_twooutlet_smart_switch_switch
-    
+  
 zwave:
   usb_path: /dev/ttyACM0
   
@@ -119,26 +101,7 @@ ifttt:
   key: !secret iftt_key
   
 #Zones for Map
-zone:
-  name: Home
-  latitude: !secret castillo_lat
-  longitude: !secret castillo_long
-  radius: 200
-  icon: mdi:home
-
-zone 2:
-  name: DWD
-  latitude: !secret ck_work_lat
-  longitude: !secret ck_work_long
-  radius: 200
-  icon: mdi:work
-
-zone 3:
-  name: Safeway
-  latitude: !secret ar_work_lat
-  longitude: !secret ar_work_long
-  radius: 200
-  icon: mdi:work
+#!include zone.yaml
   
 ###############################################################
 ######  Include Files
@@ -146,3 +109,4 @@ zone 3:
 group: !include groups.yaml
 automation: !include automations.yaml
 script: !include scripts.yaml
+
