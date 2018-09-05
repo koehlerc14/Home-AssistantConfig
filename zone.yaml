@@ -1,20 +1,17 @@
-#zone 1:
-#  name: Home
-#  latitude: !secret castillo_lat
-#  longitude: !secret castillo_long
-#  radius: 200
-#  icon: mdi:home
-#
-#zone 2:
-#  name: DWD
-#  latitude: !secret ck_work_lat
-#  longitude: !secret ck_work_long
-#  radius: 200
-#  icon: mdi:work
-#
-#zone 3:
-#  name: Safeway
-#  latitude: !secret ar_work_lat
-#  longitude: !secret ar_work_long
-#  radius: 200
-#  icon: mdi:work
+  - name: Home
+    latitude: !secret castillo_lat
+    longitude: !secret castillo_long
+    radius: 200
+    icon: mdi:home
+
+  - name: DWD
+    latitude: !secret ck_work_lat
+    longitude: !secret ck_work_long
+    radius: 200
+    icon: mdi:briefcase
+
+  - name: Safeway
+    latitude: !secret ar_work_lat
+    longitude: !secret ar_work_long
+    radius: 200
+    icon: mdi:briefcase

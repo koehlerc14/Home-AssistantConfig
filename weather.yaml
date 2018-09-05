@@ -3,6 +3,8 @@
 ## Dependencies: DARKSKY - https://darksky.net/dev/
 ##               WUNDERGROUND - https://home-assistant.io/components/sensor.wunderground/
 ################################################################
+
+
 homeassistant:
   customize:
     #DARKSKY
@@ -35,16 +37,7 @@ homeassistant:
       google_assistant: true
       google_assistant_name: 'Weather Report'
 
-###### STATE CARD
-group:
-  Weather:
-    name: Weather
-    control: hidden
-    entities:
-#      - weather.openweathermap
-      - sensor.dark_sky_daytime_high_apparent_temperature
-      - sensor.dark_sky_overnight_low_temperature
-      - sensor.dark_sky_precip_probability
+
 #      - sensor.pws_uv
 #      - sensor.uv_burn_time
 #      - camera.radar
@@ -61,53 +54,7 @@ group:
 #    still_image_url: !secret weather_radar
 #    name: Radar
 #
-sensor:
-  ## Custom Weather Report
-  - platform: template
-    sensors:
-      weather_report:
-        value_template: >
-          The weather is {{states('sensor.dark_sky_minutely_summary')[:-1]|lower}} and {{states('sensor.dark_sky_apparent_temperature') | round}} degrees. Today's high is {{states('sensor.dark_sky_daytime_high_apparent_temperature')| round}} with a low of {{states('sensor.dark_sky_overnight_low_temperature') | round}}.
-          {%- if states.sensor.pws_uv.state|int == 0 -%}
-          {%- else -%}
-          {{' '}}The current UV index is {{states('sensor.pws_uv')}} with a burn time of {{states('sensor.uv_burn_time')}} minutes.
-          {%- endif -%}
-      weather_inside_vs_outside:
-        value_template: >
-          {% if (states.sensor.average_whole_home.state | float) >  (states.sensor.dark_sky_apparent_temperature.state | float) %}
-          true
-          {% else %}
-          false
-          {% endif %}
-###### DARKSKY
-  - platform: darksky
-    api_key: !secret darksky_api_key
-    monitored_conditions:
-      - summary
-      - icon
-      - nearest_storm_distance
-      - nearest_storm_bearing
-      - precip_type
-      - precip_intensity
-      - precip_probability
-      - temperature
-      - apparent_temperature
-      - dew_point
-      - wind_speed
-      - wind_bearing
-      - cloud_cover
-      - humidity
-      - pressure
-      - visibility
-      - ozone
-      - minutely_summary
-      - hourly_summary
-      - daily_summary
-      - temperature_high
-      - temperature_low
-      - apparent_temperature_high
-      - apparent_temperature_low
-      - precip_intensity_max
+s
 
 ###### wunderground
 #  - platform: wunderground
@@ -135,11 +82,4 @@ sensor:
 #          {% else %}
 #            {{ (67 / states.sensor.pws_uv.state | float) | round }}
 #          {% endif %}
-script:
-  weather_report:
-    sequence:
-    - service: tts.google_say
-      data_template:
-        entity_id: media_player.google_home
-        message: >
-          {{states('sensor.weather_report')}}
+

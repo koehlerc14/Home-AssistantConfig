@@ -1,14 +1,13 @@
-  evening_lights:
+  Evening Lights:
     - light.ge_14295_inwall_smart_toggle_dimmer_level
     - switch.ge_14282_plugin_twooutlet_smart_switch_switch
-#  Weather:
-#    name: Weather
-#    control: hidden
-#    entities:
+   
+  ###### STATE CARD
+  Weather:
+    name: Weather
+    control: hidden
+    entities:
 #      - weather.openweathermap
-#      - sensor.dark_sky_daytime_high_apparent_temperature
-#      - sensor.dark_sky_overnight_low_temperature
-#      - sensor.dark_sky_precip_probability
-#      - sensor.pws_uv
-#      - sensor.uv_burn_time
-#      - camera.radar    
+      - sensor.dark_sky_daytime_high_apparent_temperature
+      - sensor.dark_sky_overnight_low_temperature
+      - sensor.dark_sky_precip_probability
