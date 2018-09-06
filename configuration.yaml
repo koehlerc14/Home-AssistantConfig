@@ -83,6 +83,8 @@ apple_tv:
   - host: !secret castillo_appletv_ip
     login_id: !secret castillo_appletv_login
     name: Apple TV 4K
+
+discovery:
    
 zwave:
   usb_path: /dev/ttyACM0
@@ -108,8 +110,8 @@ device_tracker:
  
 #History Graph 
 history_graph:
-  gr2:
-    name: Temperature
+  gr1:
+    name: Castillo Temperature
     entities:
       -  climate.dining_room
     hours_to_show: 168
