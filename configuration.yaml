@@ -60,6 +60,19 @@ sun:
 tts:
   - platform: google
 
+media_player:
+  - platform: directv
+    host: !secret directv_host
+    port: 8080
+    name: Downstairs DirecTV
+    device: 0
+
+  - platform: directv
+    host: 192.168.1.44
+    port: 8080
+    name: Upstairs DirecTV
+    device: !secret directv_device
+
 # Cloud
 cloud:
 
@@ -83,8 +96,6 @@ apple_tv:
   - host: !secret castillo_appletv_ip
     login_id: !secret castillo_appletv_login
     name: Apple TV 4K
-
-discovery:
    
 zwave:
   usb_path: /dev/ttyACM0
@@ -114,6 +125,10 @@ history_graph:
     name: Castillo Temperature
     entities:
       -  climate.dining_room
+      -  sensor.dining_room_thermostat_hvac_state
+      -  sensor.dining_room_thermostat_operation_mode
+      -  sensor.dining_room_thermostat_target
+      -  sensor.dining_room_thermostat_temperature
     hours_to_show: 168
     # refresh: 0 
 
