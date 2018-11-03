@@ -4,3 +4,38 @@ my_stories:
     - alias: Github Home Assistant Backup
       service: shell_command.githubbackup
       data: {}
+      
+directv_upstairs_on:
+  alias: Watch Direct TV Upstairs
+  sequence:
+    - service: remote.turn_on
+      data:
+        activity: 'Watch Direct TV Upstairs'
+
+appletv_on:
+  alias: Watch Apple TV
+  sequence:
+    - service: remote.turn_on
+      data:
+        activity: 'Watch Apple TV'
+      
+house_speakers_on:
+  alias: Turn on House Speakers
+  sequence:
+    - service: remote.turn_on
+      data:
+        activity: 'Turn on House Speakers'
+        
+vinyl_on:
+  alias: Listen to Vinyl
+  sequence:
+    - service: remote.turn_on
+      data:
+        activity: 'Listen to Vinyl'
+        
+# listen_classical_on:
+  # alias: Listen to Classical
+  # sequence:
+    # - service:
+      # data:
+        # activity: 'Listen to Classical 88.1'

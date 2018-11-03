@@ -20,7 +20,7 @@ homeassistant:
       friendly_name: 'Current Humidity'
     sensor.dark_sky_temperature:
       friendly_name: 'Current Temperature'
-    sensor.dark_sky_daily_summary:
+#    sensor.dark_sky_daily_summary:
       friendly_name: 'Daily Summary'
     # UV
 #    sensor.pws_uv:
@@ -36,11 +36,11 @@ homeassistant:
       google_assistant: true
       google_assistant_name: 'Weather Report'
 
-###### WEATHER MAP
-#camera:
-# - platform: generic
-#    still_image_url: !secret weather_radar
-#    name: Radar
+#WEATHER MAP
+camera:
+ - platform: generic
+    still_image_url: !secret weather_radar
+    name: Weather Radar
 
 ###### wunderground
 #  - platform: wunderground

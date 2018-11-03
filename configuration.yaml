@@ -60,6 +60,11 @@ sun:
 tts:
   - platform: google
 
+#WEATHER MAP
+camera:
+  - platform: generic
+    still_image_url: !secret weather_radar
+    name: Weather Radar
   
   
 media_player:
@@ -109,6 +114,11 @@ apple_tv:
   - host: !secret castillo_appletv_ip
     login_id: !secret castillo_appletv_login
     name: Apple TV 4K
+
+remote:
+  - platform: harmony
+    name: Castillo Remote
+    host: 192.168.1.184
    
 zwave:
   usb_path: /dev/ttyACM0
@@ -127,6 +137,9 @@ device_tracker:
     username: !secret ar_apple_id
     password: !secret ar_apple_pw
     account_name: !secret ar_apple_nm 
+    
+
+
 
 ###############################################################
 ######  Panels & Interface
@@ -153,4 +166,3 @@ automation: !include automations.yaml
 script: !include scripts.yaml
 zone: !include zone.yaml
 sensor: !include sensor.yaml
-
