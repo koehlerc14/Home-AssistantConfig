@@ -1,23 +1,30 @@
-  - id: sunset
-    alias: "Turn on the lights when the sun sets"
-    initial_state: True
-    hide_entity: False
-    trigger:
-      platform: sun
-      event: sunset
-      offset: "-01:00:00"  
-    action:
-      service: homeassistant.turn_on
-      entity_id: group.evening_lights
-
-  - id: sunrise
-    alias: "Turn off lights by morning"
-    initial_state: True
-    hide_entity: False
-    trigger:
-      platform: sun
-      event: sunrise
-      offset: "-05:00:00"  
-    action:
-      service: homeassistant.turn_off
-      entity_id: group.evening_lights
+- id: sunset
+  alias: Turn on the lights when the sun sets
+  initial_state: true
+  hide_entity: false
+  trigger:
+    platform: sun
+    event: sunset
+    offset: -01:00:00
+  action:
+    service: homeassistant.turn_on
+    entity_id: group.evening_lights
+- id: sunrise
+  alias: Turn off lights by morning
+  initial_state: true
+  hide_entity: false
+  trigger:
+    platform: sun
+    event: sunrise
+    offset: -05:00:00
+  action:
+    service: homeassistant.turn_off
+    entity_id: group.evening_lights
+- alias: Auto Renew SSL Cert
+  trigger:
+    platform: numeric_state
+    entity_id: sensor.ssl_cert_expiry
+    below: 29
+  action:
+    service: shell_command.renew_ssl
+  id: 0979ee6df49a4a2a8779192fd080a05c

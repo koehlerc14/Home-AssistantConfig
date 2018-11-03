@@ -1,0 +1,6 @@
+my_stories:
+  alias: Github Backup
+  sequence:
+    - alias: Github Home Assistant Backup
+      service: shell_command.githubbackup
+      data: {}

@@ -4,7 +4,7 @@
     radius: 200
     icon: mdi:home
 
-  - name: DWD
+  - name: Craig Work
     latitude: !secret ck_work_lat
     longitude: !secret ck_work_long
     radius: 200
