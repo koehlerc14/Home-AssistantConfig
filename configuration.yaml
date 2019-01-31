@@ -30,6 +30,10 @@ http:
     - 127.0.0.1
     - 192.168.1.0/24
     - fd00::/8
+
+duckdns:
+  domain: ck_duck_subdomain
+  access_token: ck_duck_token
     
 updater:
   include_used_components: true
@@ -88,7 +92,7 @@ sensor:
     name: SSL cert expiry
     unit_of_measurement: days
     scan_interval: 10800
-    command: sh ssl_expire.sh
+    command: "ssl-cert-check -b -c /etc/letsencrypt/live/koehlerc14.duckdns.org/cert.pem | awk '{ print $NF }'"
 
 shell_command:
   renew_ssl: ~/certbot/certbot-auto renew --quiet --no-self-upgrade --standalone --preferred-challenges http-01
@@ -156,6 +160,15 @@ history_graph:
       -  sensor.dining_room_thermostat_target
       -  sensor.dining_room_thermostat_temperature
     hours_to_show: 168
+    
+sensor:
+  - platform: history_stats
+    name: Heat AC today
+    entity_id: sensor.dining_room_thermostat_hvac_state
+    state: 'on'
+    type: time
+    start: '{{ now().replace(hour=0).replace(minute=0).replace(second=0) }}'
+    end: '{{ now() }}'
     # refresh: 0 
 
 ###############################################################

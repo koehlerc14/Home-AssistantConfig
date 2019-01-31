@@ -26,6 +26,4 @@
       - daily_summary
       - temperature_high
       - temperature_low
-      - apparent_temperature_high
-      - apparent_temperature_low
       - precip_intensity_max
